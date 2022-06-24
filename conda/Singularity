@@ -1,0 +1,16 @@
+
+Bootstrap: docker
+
+From: continuumio/miniconda3
+
+%files
+	locator1.2_packed.tar.gz /locator1.2_packed.tar.gz
+
+%environment
+    export NUMBA_CACHE_DIR=/tmp/numba_cache
+
+%post
+	tar xvzf /locator1.2_packed.tar.gz -C /opt/conda
+	conda-unpack
+	rm /locator1.2_packed.tar.gz
+        chmod -R 777 /opt
